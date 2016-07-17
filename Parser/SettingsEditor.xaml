@@ -1,0 +1,86 @@
+﻿<Window x:Class="Parser.SettingsEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Parser"
+        mc:Ignorable="d"
+        Title="SettingsEditor" Height="481" Width="709" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label x:Name="labelSmtpHost" Content="Smtp Host Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxSmtpHost" HorizontalAlignment="Left" Height="23" Margin="10,37,0,0" 
+                     TextWrapping="Wrap" Text="smtp.gmail.com" VerticalAlignment="Top" Width="181"/>
+        <Label x:Name="labelSmtpPort" Content="Smtp port" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxSmtpPort" HorizontalAlignment="Left" Height="23" Margin="109,66,0,0" 
+        	TextWrapping="Wrap" Text="587" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="labelEnableSSL" Content="SSL Enabled" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxSSLEnabled" HorizontalAlignment="Left" Margin="109,97,0,0" VerticalAlignment="Top" Width="82">
+            <ComboBoxItem IsSelected="True">true</ComboBoxItem>
+            <ComboBoxItem>false</ComboBoxItem>
+        </ComboBox>
+        <Label x:Name="labelLogin" Content="Login" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" 
+        	TextWrapping="Wrap" Text="login@gmail.com" VerticalAlignment="Top" Width="181"/>
+        <Label x:Name="labelPassword" Content="Password" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelAccountEmail" Content="Account Email" HorizontalAlignment="Left" Margin="10,226,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxAccountEmail" HorizontalAlignment="Left" Height="23" Margin="10,253,0,0" 
+        	TextWrapping="Wrap" Text="login@gmail.com" VerticalAlignment="Top" Width="181"/>
+        <Label x:Name="labelTargetEmail" Content="Adresser" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxAdresser" HorizontalAlignment="Left" Height="23" Margin="10,305,0,0" 
+        	TextWrapping="Wrap" Text="receiver@hostname.com" VerticalAlignment="Top" Width="181"/>
+        <Label x:Name="labelNewMailTitle" Content="New emails subject" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxEmailsSubject" HorizontalAlignment="Left" Height="23" Margin="10,357,0,0" 
+        	TextWrapping="Wrap" Text="New interestings postings" VerticalAlignment="Top" Width="181"/>
+        <PasswordBox x:Name="passwordBoxPassword" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top" Width="181"/>
+        <ComboBox x:Name="comboBoxNames" HorizontalAlignment="Left" Margin="232,37,0,0" VerticalAlignment="Top" 
+                  Width="156" Height="23" SelectionChanged="comboBoxNames_SelectionChanged"/>
+        <Label x:Name="labelSectionName" Content="Section Name" HorizontalAlignment="Left" Margin="232,11,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelInterestUrl" Content="Url" HorizontalAlignment="Left" Margin="405,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxSectionUrl" HorizontalAlignment="Left" Height="23" Margin="405,37,0,0" 
+        	TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="279"/>
+        <Label x:Name="labelSectionUrlDomain" Content="Url domain" HorizontalAlignment="Left" Margin="232,71,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxSectionUrlDomain" HorizontalAlignment="Left" Height="23" Margin="232,98,0,0" 
+        	TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198"/>
+        <Label x:Name="labelSectionUrlDomainShort" Content="Url domain short" HorizontalAlignment="Left" Margin="446,71,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxSectionUrlDomainShort" HorizontalAlignment="Left" Height="23" Margin="446,98,0,0" 
+        	TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198"/>
+        <Label x:Name="labelSectionRequestMinDelay" Content="Min delay of web-requests in milliseconds:" 
+               HorizontalAlignment="Left" Margin="232,125,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxSectionRequestMinDelay" HorizontalAlignment="Left" Height="23" Margin="469,128,0,0" 
+        	TextWrapping="Wrap" Text="2000" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="labelSectionEmailsMinDelay" Content="Min delay of emails in seconds:" 
+        	HorizontalAlignment="Left" Margin="232,158,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxSectionEmailsDelay" HorizontalAlignment="Left" Height="23" Margin="469,161,0,0" 
+        	TextWrapping="Wrap" Text="900" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="labelInterestName" Content="Interest Name" HorizontalAlignment="Left" Margin="233,248,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxInterests" HorizontalAlignment="Left" Margin="323,251,0,0" 
+                  VerticalAlignment="Top" Width="207" Height="23" SelectionChanged="comboBoxInterests_SelectionChanged"/>
+        <TextBox x:Name="textBoxNewInterestName" HorizontalAlignment="Left" Height="23" Margin="233,221,0,0" 
+        	TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198"/>
+        <Label x:Name="labelNewInterestName" Content="New Interest Name" HorizontalAlignment="Left" Margin="233,195,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonAddNewInterest" Content="Add" HorizontalAlignment="Left" Margin="442,221,0,0" 
+                VerticalAlignment="Top" Width="88" Height="23" Click="buttonAddNewInterest_Click"/>
+        <Label x:Name="labelInterestMinPrice" Content="Min price:" 
+        	HorizontalAlignment="Left" Margin="551,233,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxInterestMinPrice" HorizontalAlignment="Left" Height="23" Margin="618,236,0,0" 
+        	TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="labelInterestMaxPrice" Content="Max price:" 
+        	HorizontalAlignment="Left" Margin="551,263,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxInterestMaxPrice" HorizontalAlignment="Left" Height="23" Margin="618,264,0,0" 
+        	TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="labelInterestConstraints" Content="Interest constraints:" 
+        	HorizontalAlignment="Left" Margin="233,279,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxInterestConstraints" HorizontalAlignment="Left" Height="131" Margin="233,305,0,0" 
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" AcceptsReturn="True"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+        <Label x:Name="labelInterestKeyWords" Content="Interest key-words:" 
+        	HorizontalAlignment="Left" Margin="378,279,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxInterestKeyWords" HorizontalAlignment="Left" Height="131" Margin="378,305,0,0" 
+        	TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" AcceptsReturn="True"
+            ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+        <Button x:Name="buttonSaveSettings" Content="Save" HorizontalAlignment="Left" Margin="598,416,0,0" VerticalAlignment="Top" Width="75" 
+                Click="buttonSaveSettings_Click"/>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,83 @@
+﻿<Window x:Class="Parser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Parser"
+        mc:Ignorable="d"
+        Title="Universal Parser" Height="600" Width="1000" ResizeMode="CanMinimize"
+        Closing="Window_Closing">
+    <Grid>
+        <Button x:Name="Launch" Content="Get it!" HorizontalAlignment="Left" Margin="11,353,0,0" 
+                Width="60" Click="Launch_Click" Height="40" VerticalAlignment="Top"/>
+        <Label x:Name="labelLastOpLabel" Content="Last request time" HorizontalAlignment="Left" Margin="7,66,0,0" VerticalAlignment="Top" 
+               Width="108" BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelLastOpDT" Content="" HorizontalAlignment="Left" Margin="134,66,0,0" VerticalAlignment="Top" Width="92"
+               BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelTotalRequestsLabel" Content="Total requests" HorizontalAlignment="Left" Margin="7,101,0,0" VerticalAlignment="Top" 
+        	Width="108" BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelTotalRequestsCounter" Content="0" HorizontalAlignment="Left" Margin="134,101,0,0" VerticalAlignment="Top" Width="92"
+        	BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelLastEmailOp" Content="Last E-Mail time" HorizontalAlignment="Left" Margin="7,146,0,0" VerticalAlignment="Top" 
+        	Width="108" BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelLastEmailOpDT" Content="" HorizontalAlignment="Left" Margin="134,146,0,0" VerticalAlignment="Top" Width="92"
+			BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelTotalEMails" Content="Total E-Mails" HorizontalAlignment="Left" Margin="7,181,0,0" VerticalAlignment="Top" 
+			Width="108" BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelTotalEMailsCounter" Content="0" HorizontalAlignment="Left" Margin="134,181,0,0" VerticalAlignment="Top" Width="92"
+			BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelTotalUnshipped" Content="Total Unshipped" HorizontalAlignment="Left" Margin="7,224,0,0" VerticalAlignment="Top" 
+			Width="108" BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelTotalUnshippedCounter" Content="0" HorizontalAlignment="Left" Margin="134,224,0,0" VerticalAlignment="Top" Width="38"
+			BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelTotalShipped" Content="Total Shipped" HorizontalAlignment="Left" Margin="7,259,0,0" VerticalAlignment="Top" 
+			Width="108" BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelTotalShippedCounter" Content="0" HorizontalAlignment="Left" Margin="134,259,0,0" VerticalAlignment="Top" Width="38"
+			BorderBrush="Beige" BorderThickness="2px"/>
+        <Label x:Name="labelSleepUntil" Content="Sleep Until" HorizontalAlignment="Left" Margin="7,31,0,0" VerticalAlignment="Top" 
+            BorderBrush="Beige" BorderThickness="2px" Width="108"/>
+        <Label x:Name="labelSleepUntilData" Content="" HorizontalAlignment="Left" Margin="134,31,0,0" VerticalAlignment="Top" Width="92"
+        	BorderBrush="Beige" BorderThickness="2px"/>
+        <DataGrid x:Name="dataGrid" Margin="234,33,10,30" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="dataGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата, время" Width="auto" 
+                             Binding="{Binding Path=TimeAdded, StringFormat=\{0:yyyy.MM.dd HH:mm:ss\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Width="auto"
+                             Binding="{Binding Path=Price}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Заголовок" Width="45*"
+                             Binding="{Binding Path=Title}"></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=EMailed}" Value="true">
+                            <Setter Property="Background" Value="LightGreen"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Left" Margin="167,353,0,0" VerticalAlignment="Top" 
+                Width="57" Height="40" Click="buttonCancel_Click" IsEnabled="False"/>
+        <StatusBar Height="21" VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <TextBlock Text="Setts last update" Width="91" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Name="SettingsLoadedDTLabel" Width="109" />
+            </StatusBarItem>
+        </StatusBar>
+        <Menu x:Name="menu" Height="22" Width="229" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <MenuItem Header="Settings">
+                <MenuItem Name="MenuItemUpdateSettings" IsEnabled="False" Header="Update from file" Click="buttonUpdateSettings_Click"></MenuItem>
+                <MenuItem Name="MenuItemOpenSettingsWindow" Header="Open settings window" Click="MenuItemOpenSettingsWindow_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>
